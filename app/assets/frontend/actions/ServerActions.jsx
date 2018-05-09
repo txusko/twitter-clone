@@ -3,7 +3,7 @@ import ActionTypes from "../constants"
 
 export default {
   receivedTweets(rawTweets) {
-    console.log('ServerActions.receivedTweets');
+    console.log(3, 'ServerActions.receivedTweets');
     AppDispatcher.dispatch({
       actionType: ActionTypes.RECEIVED_TWEETS,
       rawTweets: rawTweets
@@ -20,6 +20,12 @@ export default {
     AppDispatcher.dispatch({
       actionType: ActionTypes.RECEIVED_USERS,
       rawUsers: rawUsers
+    });
+  },
+  receivedOneFollower(rawFollower) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.RECEIVED_ONE_FOLLOWER,
+      rawFollower: rawFollower
     });
   }
 }

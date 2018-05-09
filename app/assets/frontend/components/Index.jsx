@@ -6,7 +6,6 @@ import TweetStore from '../stores/TweetStore';
 import { Link } from 'react-router-dom';
 
 import TweetActions from "../actions/TweetActions"
-TweetActions.getAllTweets();
 
 let getAppState = () => {
   return { tweetsList: TweetStore.getAll() };
@@ -19,13 +18,14 @@ export default class Index extends React.Component {
     this._onChange = this._onChange.bind(this);
   }
   componentDidMount() {
+    TweetActions.getAllTweets();
     TweetStore.addChangeListener(this._onChange);
   }
   componentWillUnmount() {
     TweetStore.removeChangeListener(this._onChange);
   }
   _onChange() {
-    console.log('Index._onChange');
+    console.log(5, 'Index._onChange');
     this.setState(getAppState());
   }
   render() {

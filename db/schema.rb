@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508113847) do
+ActiveRecord::Schema.define(version: 20180509075743) do
 
   create_table "followers", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
-    t.integer  "followeb_by", limit: 4
+    t.integer  "followed_by", limit: 4
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
