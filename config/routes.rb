@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       get 'random'
     end
   end
+  post 'followers/follow' => 'followers#follow'
+  post 'followers/unfollow' => 'followers#unfollow'
+
   resources :tweets
   get 'profile' => 'profile#index'
   patch 'profile' => 'profile#update'

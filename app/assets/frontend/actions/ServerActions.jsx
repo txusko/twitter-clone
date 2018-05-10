@@ -16,16 +16,23 @@ export default {
       rawTweet: rawTweet
     });
   },
-  receivedUsers(rawUsers) {
+  receivedUsers(data) {
     AppDispatcher.dispatch({
       actionType: ActionTypes.RECEIVED_USERS,
-      rawUsers: rawUsers
+      data: data[0]
     });
   },
   receivedOneFollower(rawFollower) {
     AppDispatcher.dispatch({
       actionType: ActionTypes.RECEIVED_ONE_FOLLOWER,
       rawFollower: rawFollower
+    });
+  },
+  deleteOneFollower(rawFollower) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.DELETED_ONE_FOLLOWER,
+      rawFollower: rawFollower
+      //follower_id: follower_id
     });
   }
 }

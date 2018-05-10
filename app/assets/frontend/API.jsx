@@ -15,12 +15,18 @@ export default {
   },
   getAllUsers() {
     $.get("/followers/random")
-    .success( rawUsers => ServerActions.receivedUsers(rawUsers) )
+    .success( data => ServerActions.receivedUsers(data) )
     .error(error => console.log(error));
   },
   followUser(userId) {
-    $.post("/followers", { user_id: userId })
+    $.post("/followers/follow", { user_id: userId })
     .success( rawFollower => ServerActions.receivedOneFollower(rawFollower) )
+    .error(error => console.log(error));
+  },
+  unfollowUser(userId) {
+    $.post("/followers/unfollow", { user_id: userId })
+    //.success( follower_id => ServerActions.deleteOneFollower(follower_id) )
+    .success( rawFollower => ServerActions.deleteOneFollower(rawFollower) )
     .error(error => console.log(error));
   }
 }

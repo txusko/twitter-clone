@@ -27,6 +27,17 @@ export default class Follow extends React.Component {
   followUser(userId) {
     UserActions.followUser(userId);
   }
+  unfollowUser(userId) {
+    UserActions.unfollowUser(userId);
+  }
+  followOrUnfollowUser(user) {
+    console.log('aki2',getAppState());
+    if (user.following) {
+      this.unfollowUser(user.id);
+    } else {
+      this.followUser(user.id);
+    }
+  }
   followClasses(following) {
     return "secondary-content btn-floating " + (following ? "green" : "grey");
   }
@@ -37,7 +48,7 @@ export default class Follow extends React.Component {
           <img src={user.gravatar} className="circle" />
           <span className="title">{user.name}</span>
           <a className={this.followClasses(user.following)}
-            onClick={this.followUser.bind(this, user.id)}>
+            onClick={this.followOrUnfollowUser.bind(this, user)}>
             <i className="material-icons">person_pin</i>
           </a>
         </li>
